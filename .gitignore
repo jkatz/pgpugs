@@ -1,0 +1,3 @@
+envs
+*.pyc
+local_settings.py
