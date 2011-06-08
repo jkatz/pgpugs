@@ -1,0 +1,90 @@
+@import "layout.css";
+
+/**
+ * pgTheme for Drupal 5.x and 6.x - http://pgfoundry.org/projects/pgtheme/
+ * Massimiliano Marini max@linuxtime.it
+ * http://www.linuxtime.it/massimilianomarini/
+ * http://www.psql.it/ Italian PostgreSQL Community Users and Developers
+ */
+
+/**
+ * General.
+ */
+ 
+#header {
+  width: 98%;
+  margin: 0 auto;
+  height: 8em;
+  position: relative;
+  text-align: left;
+}
+#header-block {
+  position: absolute;
+  top: 0.5em;
+  right: 0;
+  width: 48em;
+  height: 1.6em;
+}
+#main {
+  width: 98%;
+  margin: 0 auto;
+  padding-top: 1.6em;
+  text-align: left;
+}
+#sidebar-left {
+  width: 17%;
+  margin-top: 2.2em;
+  float: left;
+}
+#sidebar-right {
+  width: 22.5%;
+  float: right;
+  margin-top: 2.2em;
+}
+#center {
+  width: 100%; /* if #center is the only column */
+  float: left;
+}
+body.sidebar-left #center { /* if #center and #sidebar-left are showing */
+  width: 100%;
+}
+body.sidebar-right #center { /* if #center and #sidebar-right are showing */
+  width: 76%;
+}
+body.sidebars #center { /* if #center, #sidebar-left and #sidebar-right are showing */
+  width: 74.4%;
+}
+body.sidebar-left #content { /* if #center and #sidebar-left are showing */
+  float: right;
+  width: 80%;
+}
+body.sidebar-right #content { /* if #center and #sidebar-right are showing */
+  float: left;
+  width: 100%;
+}
+body.sidebars #content { /* if #center, #sidebar-left and #sidebar-right are showing */
+  width: 80.4%;
+  float: right;
+}
+#footer {
+  clear: both;
+  padding-top: 4em;
+  text-align: center; 
+}
+/**
+ * Administer.
+ */
+body.sidebars div.admin .left, body.sidebars div.admin .right {
+  width: 48%;
+  margin: 0;
+}
+body.sidebars div.admin .left {
+  float: left;
+}
+body.sidebars div.admin .right {
+  float: right;
+}
+#system-themes table td, #system-themes table th {
+margin: 0;
+padding: 1em 0;
+}

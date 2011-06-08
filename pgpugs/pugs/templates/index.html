@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div id="center">
+    <div id="tabs-wrapper" class="clear-block">
+      <h2 class="with-tabs">PostgreSQL User Groups</h2>
+    </div>
+    <div class="node"> 
+      <div class="content"> 
+        <p>Welcome!</p> 
+        <p>Below is a list of current user groups and their home pages:</p>
+        <p><strong>Africa</strong></p> 
+        <ul>
+          {% for country in pug_groups.africa.countries.all %}
+            {% for pug in country.pugs.all %}
+              <li>{{ country.name }} - <a href="{{ pug.url }}">{{ pug.name }}</a></li>
+            {% endfor %}
+          {% endfor %}
+        <!-- <p><strong>Africa</strong></p> 
+        <ul> 
+          <li>Morocco - <a href="http://pugs.postgresql.org/moroccopug">Morocco</a></li> 
+          <li>South Africa - <a href="http://pugs.postgresql.org/jnbpug">Gauteng</a></li> 
+          <li>Tunisia - <a href="http://pugs.postgresql.org/tunisia">Tunisia</a></li> 
+        </ul>
+        <p><strong>Asia</strong></p> 
+        <ul> 
+          <li>China - <a href="http://bbs.pgsqldb.com/">PostgreSQL China Forums</a>, <a href="http://babelfish.av.com/babelfish/trurl_pagecontent?lp=zh_en&amp;trurl=http%3a%2f%2fbbs.pgsqldb.com%2findex.php%3ft%3dmsg%26th%3d10825%26start%3d0%26rid%3d%26S%3d9a6389cb7ff31ce6b72f4eed0420d6a0">User Group thread</a></li> 
+          <li>JPUG (Japan) - <a href="http://www.postgresql.jp">Postgresql.jp</a></li></li> 
+          <li>RNG - <a href="view/rgnpug">RNGPUG</a></li> 
+          <li>Western Asia - <a href="http://pugs.postgresql.org/uae">United Arab Emirates</a></li></li>
+        </ul> 
+        <p><strong>Europe</strong></p> 
+        <ul>
+          <li>France - <a href="http://www.PostgreSQLFr.org">PostgreSQLFr</a></li> 
+          <li>Germany - <a href="http://www.pgug.de/">PGUG</a> (PostgreSQL Usergroup Germany)</li> 
+          <li>Italy
+            <ul> 
+              <li><a href="http://www.itpug.org/index.it.html">IT-PUG</a>, Italian PostgreSQL Users Group</li> 
+              <li><a href="http://www.psql.it/">Psql.it</a>, Comunita Italiana utenti e sviluppatori PostgreSQL</li> 
+            </ul> 
+          </li> 
+          <li>United Kingdom- <a href="http://pugs.postgresql.org/ukpug">UKPUG</a></li>
+        </ul> 
+        <p><strong>North America</strong></p> 
+        <ul>
+          <li>Canada - <a href="http://pugs.postgresql.org/torontopug">Toronto</a></li> 
+          <li>Central America - <a href="http://pugs.postgresql.org/view/amcentralpug">Grupo de Usuarios PostgreSQL de América Central</a></li> 
+          <li>USA
+            <ul> 
+              <li><a href="http://pugs.postgresql.org/atlpug">Atlanta</a></li> 
+              <li><a href="http://pugs.postgresql.org/austinpug">Austin, TX</a> </li> 
+              <li><a href="http://pugs.postgresql.org/bwpug">Baltimore, MD / Washington DC</a> </li> 
+              <li><a href="http://pugs.postgresql.org/diapug">Denver, Colorado</a></li> 
+              <li><a href="http://pugs.postgresql.org/lapug">Los Angeles</a></li> 
+              <li><a href="http://pugs.postgresql.org/node/151">Mid-Atlantic District</a></li> 
+              <li><a href="http://postgresql.meetup.com/3/">New York</a></li> 
+              <li><a href="http://nycdpug.x10hosting.com/">New York Capital District</a> (Albany, Schenectady, and Troy)</li> 
+              <li><a href="http://pugs.postgresql.org/ohiopug">Ohio</a></li> 
+              <li><a href="http://pugs.postgresql.org/okpug">Oklahoma</a></li> 
+              <li><a href="http://pugs.postgresql.org/phillypug">Philadelphia</a></li> 
+              <li><a href="http://pugs.postgresql.org/pdx">Portland</a></li> 
+              <li><a href="http://pugs.postgresql.org/sfpug">San Francisco</a></li> 
+              <li><a href="http://www.facebook.com/group.php?gid=94763017896">San Antonio, TX</a></li> 
+              <li><a href="http://seapug.org">Seattle</a></li> 
+              <li><a href="http://pugs.postgresql.org/spug">Suncoast</a> (Tampa, Central Florida)</li> 
+              <li><a href="http://udbug.org/">Utah Database Users Group</a>, contact <a href="http://pugs.postgresql.org/user/70/contact">Joshua Tolley</a></li> 
+            </ul> 
+          </li>
+        </ul>
+        <p><strong>Oceania</strong></p> 
+        <ul> 
+          <li>Australia
+            <ul> 
+              <li><a href="http://pugs.postgresql.org/adelaide-au">Adelaide</a></li> 
+              <li><a href="http://pugs.postgresql.org/cbrpug">Canberra</a></li> 
+              <li><a href="http://pugs.postgresql.org/sydpug">Sydney</a></li> 
+            </ul> 
+          </li> 
+          <li>New Zealand
+            <ul>
+              <li><a href="http://pgug.org.nz">All New Zealand</a></li> 
+              <li><a href="http://pgug.org.nz/wiki/wellingtonmeetings">Wellington</a></li> 
+            </ul> 
+          </li>
+        </ul>
+        <p><strong>South America</strong></p> 
+        <ul>
+          <li>Argentina - <a href="/bapug">Buenos Aires</a></li> 
+          <li>Brazil - <a href="http://www.postgresql.org.br/">PostgreSQL Brasil</a></li> 
+          <li>Colombia - <a href="/colombiapug">Colombia</a></li> 
+          <li>Peru - <a href="http://www.postgresql.org.pe/">PostgreSQLPE</a></li> 
+          <li>Venezuela - <a href="http://grupove.org.ve/">Grupo de Usuarios PostgreSQL de Venezuela</a></li> 
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="links"> 
+    <ul class="links inline">
+      <li class="first last statistics_counter"><span class="statistics_counter">675169 reads</span></li> 
+    </ul> -->
+  </div>
+
+{% endblock content %}

@@ -1,0 +1,23 @@
+/**
+ * pgTheme for Drupal 5.x and 6.x
+ * Massimiliano Marini max@linuxtime.it
+ */
+ 
+* {
+  position: static;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  float: none;
+  clear: both;
+  background: none;
+  color: #000;
+}
+body, input, textarea, select {
+  background: none;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+#header-block, ul.primary-links, .sidebar {
+  display: none;
+}
