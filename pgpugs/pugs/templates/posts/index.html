@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div id="center">
+    <div id="tabs-wrapper" class="clear-block">
+      <h2 class="with-tabs">PostgreSQL User Groups</h2>
+    </div>
+    <div class="node"> 
+      <div class="content"> 
+          {% for post in posts.all %}
+                <span class="title">{{ post.title }}</span>
+                <span class="author">{{ post.author.fullname }}</span>
+
+                <div class="content">{{ post.content }}</div>
+          {% endfor %}
+
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
