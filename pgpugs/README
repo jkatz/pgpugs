@@ -1,16 +1,16 @@
 
-To get started:
+== To get started:
 
 * Install Django 1.3
 * Install south
 
-For use with virtualenv: 
+== For use with virtualenv: 
 
 * Create a virtualenv (probably with --no-site-packages)
 * Activate the virtualenv
 * pip -r requirements.txt
 
-Set up database: 
+== Set up database: 
 
 * create a local_settings.py
 
@@ -26,12 +26,20 @@ Here's an example for using sqlite:
 	     }
 	 }
 
-* Sync up the database: 
+== Sync up the database: 
 
 In this directory:
 	python manage.py syncdb
 	python manage.py migrate
 
-* Start up a test server
+== Start up a test server
 
 	python manage.py runserver
+
+== Using South for migrations
+
+1. Make a change to the model
+
+2. Run `python manage.py schemamigration pugs --auto`
+
+3. Run `python manage.py migrate` to update the database
