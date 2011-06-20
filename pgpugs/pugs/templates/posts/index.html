@@ -6,14 +6,15 @@
       <h2 class="with-tabs">PostgreSQL User Groups</h2>
     </div>
     <div class="node"> 
-      <div class="content"> 
+      <div class="posts"> 
           {% for post in posts.all %}
-                <span class="title">{{ post.title }}</span>
-                <span class="author">{{ post.author.fullname }}</span>
-
-                <div class="content">{{ post.content }}</div>
+	  	<div class="post">
+			<div class="title">{{ post.title }}</div>
+			<span class="date">{{ post.date_published }}</span>
+			<div class="content">{{ post.content }}</div>
+			<span class="author">Posted by {{ post.author.fullname }}</span>
+		</div>
           {% endfor %}
-
       </div>
     </div>
   </div>

@@ -20,3 +20,10 @@
   width: auto;
 }
 
+.author, .date {
+	font-style: oblique;
+}
+
+.title {
+	font-size: 1.25em;
+}
