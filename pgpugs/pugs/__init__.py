@@ -1,5 +1,5 @@
 from pugs.models import Region
-from pugs.models import Post, Author
+from pugs.models import Post
 
 class PugGroups():
     def africa(self):

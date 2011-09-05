@@ -1,10 +1,11 @@
 from django.contrib import admin
-from pugs.models import *
+from models import *
+
+class PostAdmin(admin.ModelAdmin):
+    prepopulated_fields = { 'slug': ('title', ) }
 
 admin.site.register(Country)
+admin.site.register(Post, PostAdmin)
 admin.site.register(Pug)
 admin.site.register(Region)
-admin.site.register(Author)
-admin.site.register(Post)
 admin.site.register(PugAuthor)
-
