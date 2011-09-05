@@ -29,6 +29,9 @@ class PugAuthor(models.Model):
     user = models.ForeignKey(User, related_name='pug_authors')
     pug = models.ForeignKey('Pug', related_name='pug_authors')
 
+    def full_name(self):
+        return self.user.get_full_name()
+
     def __unicode__(self):
         return "%s %s" % (self.user, self.pug)
 
@@ -39,7 +42,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     slug = models.SlugField(null=True, unique=True)
-    url = models.URLField(verify_exists=False)
+    url = models.URLField(verify_exists=False, null=True, blank=True)
     author = models.ForeignKey('PugAuthor', related_name='posts')
     date_published = models.DateTimeField(null=False)
 
