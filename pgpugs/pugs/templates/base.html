@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
   <head> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-      <title>PostgreSQL User Groups | PostgreSQL User Group Site</title> 
+      <title>{% block title %}PostgreSQL User Groups{% endblock title %} | PostgreSQL User Group Site</title> 
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
       <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://pugs.postgresql.org/blogapi/rsd" /> 
       <!--[if IE]>
@@ -42,7 +42,7 @@
         <div id="pgHeaderContainer"> 
           <div id="pgHeader"> 
             <div id="pgHeaderLogoLeft"> 
-              <a href="http://pugs.postgresql.org/"> 
+              <a href="{% url pugs.views.index %}"> 
                 <img alt="PostgreSQL" style="border:none;height:80px;width:230px" src="/static/images/hdr_left.png"/> 
               </a> 
             </div> 
@@ -60,7 +60,7 @@
             </div> 
             <ul id="pgTopNavList">
               <li class="first menu-1-1-2">
-                <a href="http://pugs.postgresql.org" title="PUGS Home link" class="menu-1-1-2">Home</a>
+                <a href="{% url pugs.views.index %}" title="PUGS Home link" class="menu-1-1-2">Home</a>
               </li> 
               <li class="menu-1-2-2">
                 <a href="/africa" title="PostgreSQL User Groups in Africa" class="menu-1-2-2">Africa</a>
@@ -84,7 +84,6 @@
               {% block content %} {% endblock content %}
             </div>
             <span class="clear"></span> 
-            <p><a href="#top" class="to-top">Back to top</a></p> 
           </div><!-- /center --> 
         </div><!-- /content --> 
         <div id="sidebar-left" class="sidebar"> 
@@ -99,7 +98,6 @@
                         <li class="leaf"><a href="/directory">Directory</a></li> 
                         <li class="leaf"><a href="/view/recent_changes">Latest posts + RSS</a></li> 
                         <li class="leaf"><a href="/recent_changes">Recent changes</a></li> 
-                        <li class="leaf"><a href="/tracker">Recent posts</a></li> 
                         <li class="collapsed"><a href="/aggregator">News aggregator</a></li>
                       </ul>
                     </div>
@@ -117,20 +115,13 @@
                     <div class="content"> 
                       <div class="item-list">
                         <ul>
-                          <li><a href="/node/1664">PDXPUG May meeting report</a></li>
-                          <li><a href="/node/1663">PgDay at OSCON</a></li>
-                          <li><a href="/node/1662">PDXPUG April 2011 Meeting: Distributing Extensions on PGXN</a></li>
-                          <li><a href="/node/1661">LAPUG/LOPSA-LA meeting: &quot;Advanced PostgreSQL Commands and Queries&quot; - Thur, April 21st, 7pm-10pm, Santa Monica</a></li>
-                          <li><a href="/node/1660">PDXPUG:  March meeting</a></li>
-                          <li><a href="/node/1659">PDXPUG:  February meeting</a></li>
-                          <li><a href="/node/1657">Intro to Databases with PostgreSQL - class at Portland FreeGeek</a></li>
-                          <li><a href="/node/1656">PDXPUG January meeting in one week</a></li>
-                          <li><a href="/node/1655">AustinPUG January meeting</a></li>
-                          <li><a href="/node/1654">PDXPUG - upcoming meetings:  Founders Series!</a></li>
+                          {% for post in latest_posts %}
+                            <li><a href="#">{{ post.title }}</a></li>
+                          {% endfor %}
                         </ul>
                       </div>
                       <div class="more-link">
-                        <a href="/blog" title="Read the latest blog entries.">more</a>
+                        <a href="{% url pugs.views.posts %}" title="Read the latest blog entries.">more</a>
                       </div>
                     </div>
                   </div>

@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 class Country(models.Model):
@@ -12,7 +13,7 @@ class Pug(models.Model):
         basic information about a PUG
     """
     name = models.CharField(max_length=255)
-    country = models.ForeignKey(Country, related_name='pugs')
+    country = models.ForeignKey('Country', related_name='pugs')
     slug = models.SlugField(null=True, unique=True)
     url = models.URLField(verify_exists=False)
     notes = models.CharField(max_length=255, null=True, blank=True)
@@ -21,33 +22,18 @@ class Pug(models.Model):
     def __unicode__(self):
         return self.name
 
-class Region(models.Model):
-    name = models.CharField(max_length=16)
-    slug = models.SlugField(unique=True)
-
-    def __unicode__(self):
-        return self.name
-
-class Author(models.Model):
-    """
-    Blog post author
-    """
-    username = models.CharField(max_length=25, null=False, unique=True)
-    fullname = models.CharField(max_length=100, null=False)
-    date_created = models.DateTimeField(null=False)
-
-    def __unicode__(self):
-        return self.username
-
 class PugAuthor(models.Model):
     """ 
         A relationship table between pugs and authors
     """
-    author = models.ForeignKey(Author, related_name='pug_authors')
-    pug = models.ForeignKey(Pug, related_name='pug_authors')
+    user = models.ForeignKey(User, related_name='pug_authors')
+    pug = models.ForeignKey('Pug', related_name='pug_authors')
+
+    def full_name(self):
+        return self.user.get_full_name()
 
     def __unicode__(self):
-        return self.username + self.pug
+        return "%s %s" % (self.user, self.pug)
 
 class Post(models.Model):
     """
@@ -56,9 +42,17 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     slug = models.SlugField(null=True, unique=True)
-    url = models.URLField(verify_exists=False)
-    author = models.ForeignKey(Author, related_name='posts')
+    url = models.URLField(verify_exists=False, null=True, blank=True)
+    author = models.ForeignKey('PugAuthor', related_name='posts')
     date_published = models.DateTimeField(null=False)
 
     def __unicode__(self):
         return self.title
+
+
+class Region(models.Model):
+    name = models.CharField(max_length=16)
+    slug = models.SlugField(unique=True)
+
+    def __unicode__(self):
+        return self.name

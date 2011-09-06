@@ -1,21 +1,36 @@
 {% extends 'base.html' %}
 
+{% block title %}
+  Blogs
+{% endblock title %}
+
 {% block content %}
   <div id="center">
     <div id="tabs-wrapper" class="clear-block">
-      <h2 class="with-tabs">PostgreSQL User Groups</h2>
+      <h2 class="with-tabs">Blogs</h2>
     </div>
     <div class="node"> 
       <div class="posts"> 
-          {% for post in posts.all %}
-	  	<div class="post">
-			<div class="title">{{ post.title }}</div>
-			<span class="date">{{ post.date_published }}</span>
-			<div class="content">{{ post.content }}</div>
-			<span class="author">Posted by {{ post.author.fullname }}</span>
-		</div>
-          {% endfor %}
+        {% for post in posts.object_list %}
+          <div class="post">
+            <div class="title">{{ post.title }}</div>
+            <span class="date">{{ post.date_published }}</span>
+            <div class="content">{{ post.content }}</div>
+            <span class="author">Posted by {{ post.author.full_name }}</span>
+          </div>
+        {% endfor %}
       </div>
+      {% if posts.has_previous %}
+        <a href="?page={{ contacts.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+        Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+      </span>
+
+      {% if contacts.has_next %}
+        <a href="?page={{ posts.next_page_number }}">next</a>
+      {% endif %}
     </div>
   </div>
 
